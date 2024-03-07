@@ -6,7 +6,7 @@ from openai import OpenAI
 
 
 # Retrieve the API key from the environment variable
-openai.api_key = os.environ["OPENAI_API_KEY"]
+#openai.api_key = os.environ["OPENAI_API_KEY"]
 api_key = os.environ.get("OPENAI_API_KEY")
 api_key = os.environ.get("HUGGINGFACE_API_KEY")
 
