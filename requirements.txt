@@ -1,0 +1,8 @@
+ipywidgets
+python-dotenv
+openai
+streamlit
+langchain
+trulens-eval
+
+
