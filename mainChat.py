@@ -1,4 +1,5 @@
 import streamlit as st
+import requests
 import openai
 import time
 import os
@@ -10,7 +11,6 @@ from openai import OpenAI
 api_key = os.environ.get("OPENAI_API_KEY")
 api_key = os.environ.get("HUGGINGFACE_API_KEY")
 
-
 #added by PaulB to increase the UX by showing inside the tab for easy access/ notice among many open tabs
 st.set_page_config(
     page_title="BOT PAUL BISWA",  
@@ -18,14 +18,11 @@ st.set_page_config(
     layout="wide"
 )
 
-
-#added by PaulB to chnage the default hyoperlink colors
 link_color = "#e2dff4"
 # Inject CSS using markdown and `unsafe_allow_html`
 st.markdown(f"""<style>
 a:link {{ color: {link_color}; }}
 a[href="https://labs.openai.com/"] {{ color: {link_color}; }}
-a[href="https://platform.openai.com/docs/models/dall-e"] {{ color: {link_color}; }}
 </style>""", unsafe_allow_html=True)
 
 st.markdown(
@@ -38,19 +35,26 @@ st.markdown(
             margin-bottom: 1rem;
         }
     </style>
-""",
+    """,
     unsafe_allow_html=True,
 )
+
 st.markdown(
         """<div class="pixel-font">::  Smart Waste Bot  ::</div>
     """,
         unsafe_allow_html=True,
     )
 st.markdown("###### Interactive Chat - by SuperNova *Paul*")
-#st.text("Interactive Chat - by SuperNova Paul")
 st.header(" :wastebasket:  Your 24/7 Assistant on Circular Design   :recycle: ")
 st.markdown("###### Please type in the Input Field at the bottom any Queries related to Domestic Waste Disposal Guidance and Community Waste Management Recommendations!")
-
+st.markdown("""
+<script>
+document.querySelector(".st-c")
+    .querySelector("input").focus();
+document.getElementsByClassName(".st-c")[0].focus();
+document.querySelector('.stTextInput > input').focus();
+</script>
+""", unsafe_allow_html=True)
 
 # Set OpenAI API key from Streamlit secrets
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
@@ -59,6 +63,39 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo-0125"
 
+# Setting the OpenAI API endpoint URL 
+fine_tune_url = "https://api.openai.com/v1/models/gpt-3/fine-tune"
+
+fine_tune_data = [
+  {"prompt": "Create a guide for reducing food waste in a household:",
+   "completion": "Plan meals ahead to reduce overbuying and track expiration dates..."},
+  {"prompt": "Develop a training program for waste management personnel on hazardous waste disposal:",
+   "completion": "Provide hands-on training on the safe handling and disposal of hazardous materials..."}, 
+  {"prompt": "Design a sustainable packaging solution for a food product:",
+   "completion": "Using biodegradable materials and minimal packaging..."},
+  {"prompt": "Create a step-by-step guide for sorting and recycling household waste:",
+   "completion": "Start by separating recyclables from non-recyclables..."},
+  {"prompt": "Develop a waste management plan for a small community:",
+   "completion": "Conduct waste audits to identify key areas of improvement..."},
+  {"prompt": "Write a policy for composting organic waste in a residential setting:",
+   "completion": "All food scraps should be collected in designated bins..."},
+  {"prompt": "Design a circular economy model for electronic waste recycling:",
+   "completion": "Implement a system for collecting, refurbishing, and reselling electronic devices..."},
+  {"prompt": "Write a proposal for implementing a community-wide composting program:",
+   "completion": "Engage with local businesses and residents to promote the benefits of composting..."},
+  {"prompt": "Design a waste collection schedule for a city that maximizes efficiency and reduces emissions:",
+   "completion": "Utilize data analytics to optimize collection routes and allocate resources effectively..."},
+  {"prompt": "Create a communication strategy to educate the public on the importance of proper waste disposal practices:",
+   "completion": "Utilize social media, workshops, and community events to raise awareness and promote responsible waste management..."},
+]
+
+# Prepare the fine-tuning request data
+data = {
+    "training_phrases": fine_tune_data,
+}
+headers = {}
+# Send the fine-tuning request
+response = requests.post(fine_tune_url, headers=headers, json=data)
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -70,9 +107,9 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):st.markdown(message["content"])
     #{"role": "system", "content": "You are a waste management and disposal expert."}
 
-#####st.write("This is inside the container")
+
 # Accept user input
-if prompt := st.chat_input("Give me some tips for Recycling Recommender System?"):
+if prompt := st.chat_input("✍️ Type your prompt/ queries here"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container

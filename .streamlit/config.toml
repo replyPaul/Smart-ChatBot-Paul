@@ -7,15 +7,13 @@ gatherUsageStats = false
 primaryColor = "chartreuse"
 
 # Background color for the container.
-backgroundColor = "#7e6ece"
-
-# Using as the background for most widgets
-secondaryBackgroundColor =  "#8a7ed1" #b6afe3"  ##6D5EC6
+backgroundColor = "#775"
+secondaryBackgroundColor =  "#998EE7" #8a7ed1" #b6afe3"  ##6D5EC6
 
 
 # Font color for the page.
 #textColor = "#6e7074" # grey
-textColor = "#f4f4f9"
+textColor = "#F9F9FF"
 
 # Font family (serif | sans serif | mono) for the page. Will not impact code areas.
 # Default: "sans serif"
