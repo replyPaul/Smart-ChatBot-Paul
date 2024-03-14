@@ -7,16 +7,15 @@ gatherUsageStats = false
 primaryColor = "chartreuse"
 
 # Background color for the container.
-backgroundColor = "#775"
-secondaryBackgroundColor =  "#998EE7" #8a7ed1" #b6afe3"  ##6D5EC6
+backgroundColor = "#40546f" #4c6483" 
+secondaryBackgroundColor =  "#738599" 
 
 
 # Font color for the page.
-#textColor = "#6e7074" # grey
 textColor = "#F9F9FF"
 
 # Font family (serif | sans serif | mono) for the page. Will not impact code areas.
 # Default: "sans serif"
 font = "monospace"
 
-#Better to not to change values w/o discussing with PaulB
+#Better not to change color values w/o discussing with PaulB

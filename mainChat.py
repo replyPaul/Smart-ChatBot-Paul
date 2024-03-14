@@ -3,7 +3,11 @@ import requests
 import openai
 import time
 import os
+import datasets
 from openai import OpenAI
+from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from streamlit_extras.let_it_rain import rain
 
 
 # Retrieve the API key from the environment variable
@@ -17,6 +21,15 @@ st.set_page_config(
     page_icon="♻️",
     layout="wide"
 )
+
+def recycle():
+    rain(
+        emoji="🪂",
+        font_size=50,
+        falling_speed=4.5,
+        animation_length=0.91,
+    )
+recycle()
 
 link_color = "#e2dff4"
 # Inject CSS using markdown and `unsafe_allow_html`
@@ -38,15 +51,26 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+st.markdown("""
+<style>
+@media only screen and (max-width: 768px) {
+  .st-c {  /* Target chat input container */
+    margin-bottom: 20px; /* Adjust spacing as needed */
+  }
+}
+</style>
+""", unsafe_allow_html=True)
 
 st.markdown(
         """<div class="pixel-font">::  Smart Waste Bot  ::</div>
     """,
         unsafe_allow_html=True,
     )
-st.markdown("###### Interactive Chat - by SuperNova *Paul*")
+st.markdown("###### Interactive AI Chat - SuperNova *Paul*")
+st.text("Made for a Hackathon Challemnge - LabLabAI")
 st.header(" :wastebasket:  Your 24/7 Assistant on Circular Design   :recycle: ")
-st.markdown("###### Please type in the Input Field at the bottom any Queries related to Domestic Waste Disposal Guidance and Community Waste Management Recommendations!")
+st.markdown("###### At the bottom, in the input field, please type any queries @ domestic or community waste disposal guidance and circular design recommendations!!")
+st.write("( Note: Assisting you for any general topics also. SFT/Supervised fine tuning and RAG will take some time - Paul Biswa )")
 st.markdown("""
 <script>
 document.querySelector(".st-c")
@@ -66,6 +90,20 @@ if "openai_model" not in st.session_state:
 # Setting the OpenAI API endpoint URL 
 fine_tune_url = "https://api.openai.com/v1/models/gpt-3/fine-tune"
 
+
+
+#model_id = "CohereForAI/c4ai-command-r-v01"
+#tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
+#model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True)
+#pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
+
+#messages = [{"role": "user", "content": "Hello, how are you?"}]
+#input_ids = tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True, return_tensors="pt")
+
+#gen_tokens = model.generate(
+    #max_new_tokens=100, 
+    #temperature=0.3,)
+#gen_text = tokenizer.decode(gen_tokens[0])
 fine_tune_data = [
   {"prompt": "Create a guide for reducing food waste in a household:",
    "completion": "Plan meals ahead to reduce overbuying and track expiration dates..."},
@@ -114,10 +152,9 @@ if prompt := st.chat_input("✍️ Type your prompt/ queries here"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
     with st.chat_message("user"):
-        st.write("**You:**")
+        st.write("**Me:**")
         st.markdown(prompt)
-
-
+        
 
 # Display assistant response in chat message container
     with st.chat_message("assistant"):
@@ -130,11 +167,9 @@ if prompt := st.chat_input("✍️ Type your prompt/ queries here"):
             ],
             stream=True,
         )
-        st.write("**Your Waste Bot:** ")
-        time.sleep(0.03)
+        st.write("**My Waste Bot:** ")
+        #time.sleep(0.5)
         response = st.write_stream(stream)
         
     st.session_state.messages.append({"role": "assistant", "content": response})
-
-
 
