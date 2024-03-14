@@ -3,11 +3,10 @@ import requests
 import openai
 import time
 import os
-import datasets
 from openai import OpenAI
 from transformers import pipeline
-from transformers import AutoTokenizer, AutoModelForCausalLM
 from streamlit_extras.let_it_rain import rain
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
 
 # Retrieve the API key from the environment variable
