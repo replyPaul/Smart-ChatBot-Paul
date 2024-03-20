@@ -9,15 +9,26 @@ author_email: replypaul@gmail.com
 ---
 
 # Smart ChatBot Paul
-A user-friendly AI powered chat assistant with expertise in circular design & waste management.\n
-This Bot is designed and fine tuned to provide guidance on Domestic Waste Disposal and offer recommendations for Community Waste Management. \n
+A user-friendly AI powered chat assistant with expertise in circular design & waste management.
+
+
+This Bot is designed and fine tuned to provide guidance on Domestic Waste Disposal and offer recommendations for Community Waste Management. 
+
+
 The shared (separetely) a/v presentation will highlight the key features and benefits of the Smart Waste Bot in promoting sustainable practices.
+
+
 It was done within as part of 72 hours AI Hackathon Challenge sponsored by Saudi Data and Ministry of Communications & IT with aroun 4.4k particpants.
+
+
 After learning the intrictae techniques of super fine tuning and/or retrieval augmented genration, this interactive chat bot will be enhanced with emhanced output.
 
 
 
-#Getting started:
+
+
+
+## Getting Started:
 
 
 ### Step 1: Clone the Repository
