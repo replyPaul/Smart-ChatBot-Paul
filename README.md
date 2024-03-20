@@ -8,7 +8,8 @@ app_author: Paul Biswa
 author_email: replypaul@gmail.com
 ---
 
-# SMART WASTE BOT
+# SMART WASTE BOT 
+## - AI interactive chatbot assistant
 A user-friendly AI powered chat assistant with expertise in circular design & waste management.
 
 
@@ -99,3 +100,5 @@ Access the Streamlit app in your web browser by navigating to the URL provided b
 Typically the URL is [http://localhost:8501](http://localhost:8501)
 
 
+
+Happy Chatting with this assistance for all of your Question and Answers. 
