@@ -2,6 +2,7 @@ ipywidgets
 python-dotenv
 openai
 streamlit
+streamlit_pills
 langchain
 trulens-eval
 

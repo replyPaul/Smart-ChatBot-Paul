@@ -70,7 +70,7 @@ st.markdown("###### Interactive AI Chat - SuperNova *Paul*")
 st.text("Made in 72 hrs LabLab Hackathon Challenge")
 st.header(" :wastebasket:  Your 24/7 AI Assistant on Circular Design & Sustainibility   :recycle: ")
 st.write(" Assisting you for any general topics also, beside any queries on domestic or community waste disposal guidance. \n\n SFT/Supervised fine tuning and/or RAG will take some time till I become expert soon - Paul Biswa ")
-st.markdown("###### Some examples here. Use Or Type ur own Qs inside the input bar at bottom.")
+st.markdown("###### Some examples here. Use any Or Type ur own Qs inside the input bar at bottom.")
 
 st.markdown("""
 <script>
@@ -141,13 +141,13 @@ selectedExample = pills("✂️   ---   ✍️",
             [   'Hi Smart Waste Bot!', "What is Circular Design?",
                 "What is Waste Management?",
                 "How Waste Disposal is related with Circular Design or Sustainibility or Sustainable Design Goals?",
-                "How to  dspose off my sanitary napkins safely?",
-                "Translate your recommendations in my language please"
+                "How to  dispose off my sanitary napkins safely?",
+                "Write a song about me in my language please"
             ], ["✨","✨","✨","✨","✨","✨"],
             clearable=True,
-            index=0,
+            index=5,
         )
-st.write( selectedExample   +   "   <--  *Copy, paste/ or modify this at the bottom input field*" )
+st.write( selectedExample   +   "   <--  *Copy, paste/ or modify this example at the bottom input field*" )
 
 placeholder_value = f"✍️ Type your {selectedExample} here"
 
