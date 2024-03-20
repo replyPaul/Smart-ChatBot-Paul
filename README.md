@@ -101,4 +101,6 @@ Typically the URL is [http://localhost:8501](http://localhost:8501)
 
 
 
-Happy Chatting with this assistance for all of your Question and Answers. 
+
+
+Happy Chatting with this assistance for all of your Questions and Answers. 

@@ -4,6 +4,7 @@ import openai
 import time
 import os
 from openai import OpenAI
+from streamlit_pills import pills
 #from transformers import pipeline
 from streamlit_extras.let_it_rain import rain
 #from transformers import AutoTokenizer, AutoModelForCausalLM#
@@ -66,10 +67,11 @@ st.markdown(
         unsafe_allow_html=True,
     )
 st.markdown("###### Interactive AI Chat - SuperNova *Paul*")
-st.text("Made for a Hackathon Challemnge - LabLabAI")
-st.header(" :wastebasket:  Your 24/7 Assistant on Circular Design   :recycle: ")
-st.markdown("###### At the bottom, in the input field, please type any queries @ domestic or community waste disposal guidance and circular design recommendations!!")
-st.write("( Note: Assisting you for any general topics also. SFT/Supervised fine tuning and RAG will take some time - Paul Biswa )")
+st.text("Made in 72 hrs LabLab Hackathon Challenge")
+st.header(" :wastebasket:  Your 24/7 AI Assistant on Circular Design & Sustainibility   :recycle: ")
+st.write(" Assisting you for any general topics also, beside any queries on domestic or community waste disposal guidance. \n\n SFT/Supervised fine tuning and/or RAG will take some time till I become expert soon - Paul Biswa ")
+st.markdown("###### Some examples here. Use Or Type ur own Qs inside the input bar at bottom.")
+
 st.markdown("""
 <script>
 document.querySelector(".st-c")
@@ -134,6 +136,21 @@ headers = {}
 # Send the fine-tuning request
 response = requests.post(fine_tune_url, headers=headers, json=data)
 
+#selected = pills("Label", ["Option 1", "Option 2", "Option 3"], ["🍀", "🎈", "🌈"])
+selectedExample = pills("✂️   ---   ✍️",
+            [   'Hi Smart Waste Bot!', "What is Circular Design?",
+                "What is Waste Management?",
+                "How Waste Disposal is related with Circular Design or Sustainibility or Sustainable Design Goals?",
+                "How to  dspose off my sanitary napkins safely?",
+                "Translate your recommendations in my language please"
+            ], ["✨","✨","✨","✨","✨","✨"],
+            clearable=True,
+            index=0,
+        )
+st.write( selectedExample   +   "   <--  *Copy, paste/ or modify this at the bottom input field*" )
+
+placeholder_value = f"✍️ Type your {selectedExample} here"
+
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -146,7 +163,7 @@ for message in st.session_state.messages:
 
 
 # Accept user input
-if prompt := st.chat_input("✍️ Type your prompt/ queries here"):
+if prompt := st.chat_input(placeholder=placeholder_value, max_chars=2000):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
@@ -166,7 +183,7 @@ if prompt := st.chat_input("✍️ Type your prompt/ queries here"):
             ],
             stream=True,
         )
-        st.write("**My Waste Bot:** ")
+        st.write("**My AI Bot:** ")
         #time.sleep(0.5)
         response = st.write_stream(stream)
         
