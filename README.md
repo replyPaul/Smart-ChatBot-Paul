@@ -8,7 +8,7 @@ app_author: Paul Biswa
 author_email: replypaul@gmail.com
 ---
 
-# Smart ChatBot Paul
+# SMART WASTE BOT
 A user-friendly AI powered chat assistant with expertise in circular design & waste management.
 
 
