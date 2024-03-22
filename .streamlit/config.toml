@@ -4,11 +4,11 @@ base="dark"
 gatherUsageStats = false
 
 # screens and components. Examples of widgets using this color are st.slider and st.checkbox.
-primaryColor = "#588000" #0f810a"
+primaryColor = "#588000" 
 
 # Background color for the container.
 backgroundColor = "#333F00"
-secondaryBackgroundColor =  "#738599" 
+secondaryBackgroundColor =  "#799933" 
 
 
 # Font color for the page.

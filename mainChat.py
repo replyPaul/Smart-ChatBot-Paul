@@ -62,15 +62,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown(
-        """<div class="pixel-font">::  Smart Waste Bot  ::</div>
+        """<div class="pixel-font">:::  Smart Waste Bot  :::</div>
     """,
         unsafe_allow_html=True,
     )
-st.markdown("###### Interactive AI Chat - SuperNova *Paul*")
-st.text("Made in 72 hrs LabLab Hackathon Challenge")
+st.markdown("###### Interactive AI Asst. - SuperNova *Paul*©️")
+st.text("Made in 72 hrs LabLab AI Hackathon Challenge")
 st.header(" :wastebasket:  Your 24/7 AI Assistant on Circular Design & Sustainibility   :recycle: ")
 st.write(" Assisting you for any general topics also, beside any queries on domestic or community waste disposal guidance. \n\n SFT/Supervised fine tuning and/or RAG will take some time till I become expert soon - Paul Biswa ")
-st.markdown("###### Some examples here. Use any Or Type ur own Qs inside the input bar at bottom.")
+st.markdown("###### Some examples here to use OR Type ur own Qs inside the input bar at bottom.")
 
 st.markdown("""
 <script>
@@ -142,14 +142,14 @@ selectedExample = pills("✂️   ---   ✍️",
                 "What is Waste Management?",
                 "How Waste Disposal is related with Circular Design or Sustainibility or Sustainable Design Goals?",
                 "How to  dispose off my sanitary napkins safely?",
-                "Write a song about me in my language please"
+                "Write a song about me in my language"
             ], ["✨","✨","✨","✨","✨","✨"],
-            clearable=True,
+            clearable=False,
             index=5,
         )
-st.write( selectedExample   +   "   <--  *Copy, paste/ or modify this example at the bottom input field*" )
+st.write( selectedExample + "  <---  *Copy, paste/ or modify it at the bottom input bar*" )
 
-placeholder_value = f"✍️ Type your {selectedExample} here"
+placeholder_value = f"✍️ Type '{selectedExample}' here ✍️"
 
 # Initialize chat history
 if "messages" not in st.session_state:
