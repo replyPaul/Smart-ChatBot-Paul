@@ -5,8 +5,8 @@ import time
 import os
 from openai import OpenAI
 from streamlit_pills import pills
-from streamlit_extras.let_it_rain import rain
 #from transformers import pipeline
+from streamlit_extras.let_it_rain import rain
 #from transformers import AutoTokenizer, AutoModelForCausalLM#
 
 
@@ -24,10 +24,10 @@ st.set_page_config(
 
 def recycle():
     rain(
-        emoji="🪂",
-        font_size=50,
-        falling_speed=4.5,
-        animation_length=0.91,
+        emoji="🐣",
+        font_size=37,
+        falling_speed=9.1,
+        animation_length=0.81,
     )
 recycle()
 
