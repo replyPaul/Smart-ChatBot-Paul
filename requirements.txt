@@ -3,6 +3,7 @@ python-dotenv
 openai
 streamlit
 streamlit_pills
+streamlit_extras
 langchain
 
 
