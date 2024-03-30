@@ -5,8 +5,8 @@ import time
 import os
 from openai import OpenAI
 from streamlit_pills import pills
-#from transformers import pipeline
 from streamlit_extras.let_it_rain import rain
+#from transformers import pipeline
 #from transformers import AutoTokenizer, AutoModelForCausalLM#
 
 
@@ -68,7 +68,7 @@ st.markdown(
     )
 st.markdown("###### Interactive AI Asst. - *Paul Biswa*©️")
 st.text("Made in 72 hrs AI Hackathon Challenge")
-st.subheader(" :wastebasket: GenAI powered 24/7 companion on Circular Design & Sustainibility for a greener future :recycle: ")
+st.subheader(" 🌍 GenAI powered 24/7 companion on Circular Design & Sustainibility for a greener future  :four_leaf_clover:")
 #st.write(" For any domestic or community water management and waste disposal guidance ")
 
 
@@ -136,17 +136,16 @@ headers = {}
 # Send the fine-tuning request
 response = requests.post(fine_tune_url, headers=headers, json=data)
 
-#selected = pills("Label", ["Option 1", "Option 2", "Option 3"], ["🍀", "🎈", "🌈"])
 selectedExample = pills("",
-            [   'Hi Green Eco Bot!', "What is Circular Design?",
-                "Water Scarcity: A Family's responsibilities?",
-                "What is Water and Waste Management?",
+            [   'What is Green Eco?', "What is Circular Design?",
+                "Water Scarcity: A Family's responsibilities?", 
+                "I'm confused about Plastic usage. Help me", "How to  dispose off my sanitary napkins safely?",
                 "How Waste Disposal or Water Management is related with Circular Design or Sustainibility Goals?",
-                "How to  dispose off my sanitary napkins safely?",
-                "Where to discard food with fungus or when stale?",  
-            ], ["✨","✨","✨","✨","✨","✨","✨"],
+                "Where to discard food with fungus or when stale?", "What is Water and Waste Management?",
+                "Best practices to conserve natural resources like water",
+            ], ["✨","✨","✨","✨","✨","✨","✨","✨","✨"],
             clearable=False,
-            index=2,
+            index=0,
         )
 #st.write( selectedExample+ "  <---  *Copy, paste/ or modify it at the bottom input bar*" )
 st.markdown("*Some examples above to click.  OR Type ur Qs inside the bottom green input bar*")
@@ -165,7 +164,7 @@ for message in st.session_state.messages:
 
 
 # Accept user input
-if prompt := st.chat_input(placeholder=placeholder_value, max_chars=600) or selectedExample:
+if prompt := st.chat_input(placeholder=placeholder_value, max_chars=555) or selectedExample:
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
