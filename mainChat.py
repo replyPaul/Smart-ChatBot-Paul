@@ -66,11 +66,11 @@ st.markdown(
     """,
         unsafe_allow_html=True,
     )
-st.markdown("###### Interactive AI Asst. - SuperNova *Paul*©️")
-st.text("Made in 72 hrs LabLab AI Hackathon Challenge")
-st.header(" :wastebasket:  Your 24/7 AI Assistant on Circular Design & Sustainibility   :recycle: ")
-st.write(" Assisting you for any general topics also, beside any queries on domestic or community waste disposal guidance. \n\n SFT/Supervised fine tuning and/or RAG will take some time till I become expert soon - Paul Biswa ")
-st.markdown("###### Some examples here to use OR Type ur own Qs inside the input bar at bottom.")
+st.markdown("###### Interactive AI Asst. - *Paul Biswa*©️")
+st.text("Made in 72 hrs AI Hackathon Challenge")
+st.header(" :wastebasket:  24/7 AI Assistant on Circular Design & Sustainibility   :recycle: ")
+st.write(" Assisting for any domestic or community waste disposal guidance ")
+st.markdown("###### Some examples here to click.  OR Type ur own Qs inside the bottom input bar")
 
 st.markdown("""
 <script>
@@ -137,17 +137,17 @@ headers = {}
 response = requests.post(fine_tune_url, headers=headers, json=data)
 
 #selected = pills("Label", ["Option 1", "Option 2", "Option 3"], ["🍀", "🎈", "🌈"])
-selectedExample = pills("✂️   ---   ✍️",
+selectedExample = pills("",
             [   'Hi Smart Waste Bot!', "What is Circular Design?",
-                "What is Waste Management?",
+                "What is Water and Waste Management?",
                 "How Waste Disposal is related with Circular Design or Sustainibility or Sustainable Design Goals?",
                 "How to  dispose off my sanitary napkins safely?",
-                "Write a song about me in my language"
+                "Where to discard food with fungus or when stale?"
             ], ["✨","✨","✨","✨","✨","✨"],
             clearable=False,
-            index=5,
+            index=0,
         )
-st.write( selectedExample + "  <---  *Copy, paste/ or modify it at the bottom input bar*" )
+#st.write( selectedExample+ "  <---  *Copy, paste/ or modify it at the bottom input bar*" )
 
 placeholder_value = f"✍️ Type '{selectedExample}' here ✍️"
 
@@ -163,7 +163,7 @@ for message in st.session_state.messages:
 
 
 # Accept user input
-if prompt := st.chat_input(placeholder=placeholder_value, max_chars=2000):
+if prompt := st.chat_input(placeholder=placeholder_value, max_chars=999) or selectedExample:
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container

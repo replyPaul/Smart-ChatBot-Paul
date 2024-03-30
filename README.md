@@ -43,7 +43,7 @@ Navigate to your local repository folder using 'cd' command.
 Create a virtual environment to isolate the dependencies for the app.
 
 ```bash
-python3.8 -m venv venv
+python3.11 -m venv venv
 source venv/bin/activate
 ```
 
