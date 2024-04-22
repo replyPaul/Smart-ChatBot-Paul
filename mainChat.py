@@ -2,16 +2,23 @@ import streamlit as st
 import requests
 import openai
 import time
+import toml
+import sys
 import os
 from openai import OpenAI
 from streamlit_pills import pills
-#from transformers import pipeline
 from streamlit_extras.let_it_rain import rain
+from dotenv import load_dotenv
+#from transformers import pipeline
 #from transformers import AutoTokenizer, AutoModelForCausalLM#
 
+load_dotenv(".streamlit/secrets.toml")
+# Access secrets from the secret file (or env variables
 
 # Retrieve the API key from the environment variable
 #openai.api_key = os.environ["OPENAI_API_KEY"]
+api_key = os.getenv("OPENAI_API_KEY")
+api_key = st.secrets.get("OPENAI_API_KEY")
 api_key = os.environ.get("OPENAI_API_KEY")
 api_key = os.environ.get("HUGGINGFACE_API_KEY")
 
@@ -24,10 +31,10 @@ st.set_page_config(
 
 def recycle():
     rain(
-        emoji="🐣",
-        font_size=37,
-        falling_speed=9.1,
-        animation_length=0.81,
+        emoji="♻️World Earth Day!🌏",
+        font_size=27,
+        falling_speed=9.19,
+        animation_length=0.9,
     )
 recycle()
 
@@ -68,7 +75,7 @@ st.markdown(
     )
 st.markdown("###### Interactive AI Asst. - *Paul Biswa*©️")
 st.text("Made in 72 hrs AI Hackathon Challenge")
-st.subheader(" 🌍 GenAI powered 24/7 companion on Circular Design & Sustainibility for a greener future  :four_leaf_clover:")
+st.markdown(f"<h4> 🌍 GenAI powered 24/7 companion on Circular Design & Sustainibility for a greener future ♻️ </h4>", unsafe_allow_html=True)
 #st.write(" For any domestic or community water management and waste disposal guidance ")
 
 
@@ -138,23 +145,26 @@ response = requests.post(fine_tune_url, headers=headers, json=data)
 
 selectedExample = pills("",
             [   'What is Green Eco?', "What is Circular Design?",
-                "Water Scarcity: A Family's responsibilities?", 
-                "I'm confused about Plastic usage. Help me", "How to  dispose off my sanitary napkins safely?",
-                "How Waste Disposal or Water Management is related with Circular Design or Sustainibility Goals?",
-                "Where to discard food with fungus or when stale?", "What is Water and Waste Management?",
+                "Give some practical tips to control single-use purposes plastic usage",
+                "Water Scarcity: An Urban Family's responsibilities?", "What is Water and Waste Management?",
+                "Planet over Plastic: Help me to understand", "How to  dispose off my sanitary napkins safely?",
+                "Where to discard food with fungus or when stale?", 
                 "Best practices to conserve natural resources like water",
-            ], ["✨","✨","✨","✨","✨","✨","✨","✨","✨"],
+                "How Waste Disposal or Water Management is related with Circular Design or Sustainibility Goals?",
+            ], ["✨","✨","✨","✨","✨","✨","✨","✨","✨","✨"],
             clearable=False,
-            index=0,
+            index=2,
         )
 #st.write( selectedExample+ "  <---  *Copy, paste/ or modify it at the bottom input bar*" )
 st.markdown("*Some examples above to click.  OR Type ur Qs inside the bottom green input bar*")
-
+st.text("PS: due to cloud python verison mismatch, sometimes example components are not rendering")
+st.markdown("---")
 placeholder_value = f"✍️ Type '{selectedExample}' here ✍️"
 
 # Initialize chat history
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    #st.session_state.messages = []
+    st.session_state.messages = [{"role": "assistant", "content": "Hi!  Ask me to help you on the topics around Green Environmnet and World Earth Day!"}]
 
 
 # Display chat messages from history on app rerun
@@ -164,12 +174,12 @@ for message in st.session_state.messages:
 
 
 # Accept user input
-if prompt := st.chat_input(placeholder=placeholder_value, max_chars=555) or selectedExample:
+if prompt := st.chat_input(placeholder=placeholder_value, max_chars=3555) or selectedExample:
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
-    with st.chat_message("user"):
-        st.write("**Me:**")
+    with st.chat_message("human"):
+        st.write("**You:**")
         st.markdown(prompt)
         
 
@@ -184,7 +194,7 @@ if prompt := st.chat_input(placeholder=placeholder_value, max_chars=555) or sele
             ],
             stream=True,
         )
-        st.write("**My AI Bot:** ")
+        st.write("**Green Eco Bot:** ")
         #time.sleep(0.5)
         response = st.write_stream(stream)
         
