@@ -20,9 +20,8 @@ load_dotenv(".streamlit/secrets.toml")
 api_key = os.getenv("OPENAI_API_KEY")
 api_key = st.secrets.get("OPENAI_API_KEY")
 api_key = os.environ.get("OPENAI_API_KEY")
-api_key = os.environ.get("HUGGINGFACE_API_KEY")
+#api_key = os.environ.get("HUGGINGFACE_API_KEY")
 
-#added by PaulB to increase the UX by showing inside the tab for easy access/ notice among many open tabs
 st.set_page_config(
     page_title="BOT PAUL BISWA",  
     page_icon="♻️",
@@ -31,8 +30,8 @@ st.set_page_config(
 
 def recycle():
     rain(
-        emoji="♻️World Earth Day!🌏",
-        font_size=27,
+        emoji="♻️World Environment Week!🌏",
+        font_size=25,
         falling_speed=9.19,
         animation_length=0.9,
     )
