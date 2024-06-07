@@ -144,14 +144,17 @@ headers = {}
 response = requests.post(fine_tune_url, headers=headers, json=data)
 
 selectedExample = pills("",
-            [   'What is Green Eco?', "What is Circular Design?",
+            [   "What is Green Eco?", "What is Circular Design?",
+                "How can individuals contribute to the preservation of biodiversity on World Environment Day?",
                 "Give some practical tips to control single-use purposes plastic usage",
                 "Water Scarcity: An Urban Family's responsibilities?", "What is Water and Waste Management?",
+                "How can urban families practice water reuse and recycling to minimize wastage?",
                 "Planet over Plastic: Help me to understand", "How to  dispose off my sanitary napkins safely?",
                 "Where to discard food with fungus or when stale?", 
                 "Best practices to conserve natural resources like water",
                 "How Waste Disposal or Water Management is related with Circular Design or Sustainibility Goals?",
-            ], ["✨","✨","✨","✨","✨","✨","✨","✨","✨","✨"],
+                "Discuss the role of youth and education in raising awareness about environmental issues."
+            ], ["✨","✨","✨","✨","✨","✨","✨","✨","✨","✨","✨","✨","✨"],
             clearable=False,
             index=2,
         )
@@ -174,7 +177,7 @@ for message in st.session_state.messages:
 
 
 # Accept user input
-if prompt := st.chat_input(placeholder=placeholder_value, max_chars=3555) or selectedExample:
+if prompt := st.chat_input(placeholder=placeholder_value, max_chars=1025) or selectedExample:
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
